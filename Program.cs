@@ -8,36 +8,35 @@ namespace guessingGame
         {
             int secretNum = new Random().Next(1, 101);
             Console.WriteLine($"HINT: the number is {secretNum} ");
-            int userTries = 0;
+            int userTries = 4;
             Console.WriteLine("Guess the secret number...");
             int guess = int.Parse(Console.ReadLine());
 
-            while (guess != secretNum && userTries < 3)
+            while (guess != secretNum && userTries != 1)
             {
                 Console.WriteLine("Incorrect! Guess again...");
                 if (guess < secretNum)
                 {
-                    Console.WriteLine("Too small");
+                    Console.WriteLine("Too LOW");
                 }
                 else
                 {
-                    Console.WriteLine("Too big");
+                    Console.WriteLine("Too HIGH");
 
                 }
-                userTries++;
-                Console.WriteLine($"{userTries} out of 4. Try again");
+                userTries--;
+                Console.WriteLine($"You have {userTries} out of 4 tries left. Try again");
                 Console.WriteLine("");
                 guess = int.Parse(Console.ReadLine());
             }
 
-            if (userTries < 3 || guess == secretNum)
+            if (userTries != 1 || guess == secretNum)
             {
                 Console.WriteLine($"Hurray! The secret number is {secretNum}!");
             }
             else
             {
-                userTries++;
-                Console.WriteLine($"{userTries} out of 4. You ran out of tries!");
+                Console.WriteLine($"You ran out of tries!");
             }
         }
     }
