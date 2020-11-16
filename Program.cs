@@ -6,7 +6,8 @@ namespace guessingGame
     {
         static void Main(string[] args)
         {
-            int secretNum = 43;
+            int secretNum = new Random().Next(1, 101);
+            Console.WriteLine($"HINT: the number is between one and 100 ");
             int userTries = 0;
             Console.WriteLine("Guess the secret number...");
             int guess = int.Parse(Console.ReadLine());
