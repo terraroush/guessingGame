@@ -7,7 +7,7 @@ namespace guessingGame
         static void Main(string[] args)
         {
             int secretNum = new Random().Next(1, 101);
-            Console.WriteLine($"HINT: the number is between one and 100 ");
+            Console.WriteLine($"HINT: the number is {secretNum} ");
             int userTries = 0;
             Console.WriteLine("Guess the secret number...");
             int guess = int.Parse(Console.ReadLine());
@@ -15,9 +15,17 @@ namespace guessingGame
             while (guess != secretNum && userTries < 3)
             {
                 Console.WriteLine("Incorrect! Guess again...");
-                // Console.WriteLine("");
+                if (guess < secretNum)
+                {
+                    Console.WriteLine("Too small");
+                }
+                else
+                {
+                    Console.WriteLine("Too big");
+
+                }
                 userTries++;
-                Console.WriteLine($"You've tried {userTries} times.");
+                Console.WriteLine($"{userTries} out of 4. Try again");
                 Console.WriteLine("");
                 guess = int.Parse(Console.ReadLine());
             }
@@ -28,7 +36,8 @@ namespace guessingGame
             }
             else
             {
-                Console.WriteLine("You didn't guess in the right number of tries!");
+                userTries++;
+                Console.WriteLine($"{userTries} out of 4. You ran out of tries!");
             }
         }
     }
