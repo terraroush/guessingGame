@@ -17,7 +17,15 @@ namespace guessingGame
                 guess = int.Parse(Console.ReadLine());
                 userTries++;
             }
-            Console.WriteLine("You got it!");
+
+            if (userTries == 4)
+            {
+                Console.WriteLine("failure");
+            }
+            else
+            {
+                Console.WriteLine("You got it!");
+            }
         }
     }
 }
